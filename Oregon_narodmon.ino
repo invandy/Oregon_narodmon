@@ -20,11 +20,11 @@
 #define CONNECT_TIMEOUT 10000         //Время ожидания  соединения
 #define DISCONNECT_TIMEOUT 10000      //Время ожидания отсоединения
 
-#define mac "#FF-FF-FF-FF-FF-FF"      //МАС-адрес на narodmon.ru
+#define mac "#FF:FF:FF:FF:FF:FF"      //МАС-адрес на narodmon.ru
 
 
 const char* ssid = "ASUS";            //Параметры входа в WiFi
-const char* password = "amperka412";
+const char* password = "asus";
 
 //****************************************************************************************
 
