@@ -358,10 +358,10 @@ bool send_data() {
 void sendOregonData() {
   String s;
   if (r_isreceived[0]) {
-    s = "#T1#";
+    s = "\n#T1#";
     s += r_tmp[0];
     if (r_hmdty[0] > 0 && r_hmdty[0] <= 100 ){
-      s += "#H1#";
+      s += "\n#H1#";
       s += r_hmdty[0];
     }
     
@@ -370,20 +370,20 @@ void sendOregonData() {
 
   }
   if (r_isreceived[1]) {
-    s = "#T2#";
+    s = "\n#T2#";
     s += r_tmp[1];
     if (r_hmdty[1] > 0 && r_hmdty[1] <= 100 ){
-      s += "#H2#";
+      s += "\n#H2#";
       s += r_hmdty[1];
     }
     Serial.println(s);
     if (!TEST_MODE) client.println(s);
   }
   if (r_isreceived[2]) {
-    s = "#T3#";
+    s = "\n#T3#";
     s += r_tmp[2];
     if (r_hmdty[2] > 0 && r_hmdty[2] <= 100 ){
-      s += "#H3#";
+      s += "\n#H3#";
       s += r_hmdty[2];
     }
     Serial.println(s);
