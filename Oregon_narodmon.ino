@@ -16,7 +16,7 @@
 //Режимы работы
 #define TEST_MODE       1             //Режим отладки (данные на narodmon.ru не отсылаются)
 
-#define SEND_INTERVAL 300000          //Как часто отсылать данные на сервер
+#define SEND_INTERVAL 350000          //Как часто отсылать данные на сервер
 #define CONNECT_TIMEOUT 10000         //Время ожидания  соединения
 #define DISCONNECT_TIMEOUT 10000      //Время ожидания отсоединения
 
@@ -24,7 +24,7 @@
 
 
 const char* ssid = "ASUS";            //Параметры входа в WiFi
-const char* password = "ASUS";
+const char* password = "amperka412";
 
 //****************************************************************************************
 
@@ -345,7 +345,7 @@ bool send_data() {
 void sendOregonData() {
   String s;
   if (r_isreceived[0]) {
-    s = "\n#T1#";
+    s = "#T1#";
     s += r_tmp[0];
     if (r_hmdty[0] > 0 && r_hmdty[0] <= 100 ){
       s += "\n#H1#";
@@ -357,7 +357,7 @@ void sendOregonData() {
 
   }
   if (r_isreceived[1]) {
-    s = "\n#T2#";
+    s = "#T2#";
     s += r_tmp[1];
     if (r_hmdty[1] > 0 && r_hmdty[1] <= 100 ){
       s += "\n#H2#";
@@ -367,7 +367,7 @@ void sendOregonData() {
     if (!TEST_MODE) client.println(s);
   }
   if (r_isreceived[2]) {
-    s = "\n#T3#";
+    s = "#T3#";
     s += r_tmp[2];
     if (r_hmdty[2] > 0 && r_hmdty[2] <= 100 ){
       s += "\n#H3#";
