@@ -16,7 +16,7 @@
 //Режимы работы
 #define TEST_MODE       1             //Режим отладки (данные на narodmon.ru не отсылаются)
 
-#define SEND_INTERVAL 350000          //Как часто отсылать данные на сервер
+#define SEND_INTERVAL 300000          //Как часто отсылать данные на сервер
 #define CONNECT_TIMEOUT 10000         //Время ожидания  соединения
 #define DISCONNECT_TIMEOUT 10000      //Время ожидания отсоединения
 
