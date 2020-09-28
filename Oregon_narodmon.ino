@@ -24,7 +24,7 @@
 
 
 const char* ssid = "ASUS";            //Параметры входа в WiFi
-const char* password = "asus";
+const char* password = "ASUS";
 
 //****************************************************************************************
 
@@ -178,14 +178,16 @@ void loop()
   if (oregon.captured) 
   {
     //Вывод информации в Serial
+    Serial.print("TIME:\t");
+    Serial.print(millis()/1000);
+    Serial.print("sec\t");
+      
+    for (int q = 0;q < PACKET_LENGTH; q++)
+    if (oregon.valid_p[q] == 0x0F) Serial.print(oregon.packet[q], HEX);
+    else Serial.print(" ");
     if ((oregon.sens_type == THGN132 || oregon.sens_type == THN132) && oregon.crc_c){
-      Serial.print("TIME:\t");
-      Serial.print(millis()/1000);
-      Serial.print("sec\t");
-      //if (oregon.sens_type == THGN132)  for (int q = 0;q < PACKET_LENGTH - 2; q++) Serial.print(oregon.packet[q], HEX);
-      if (oregon.sens_type == THGN132)  for (int q = 0;q < PACKET_LENGTH; q++) Serial.print(oregon.packet[q], HEX);
-      //if (oregon.sens_type == THN132)  for (int q = 0;q < PACKET_LENGTH - 4; q++) Serial.print(oregon.packet[q], HEX);
-      if (oregon.sens_type == THN132)  for (int q = 0;q < PACKET_LENGTH; q++) Serial.print(oregon.packet[q], HEX);
+
+      
       Serial.print(" TYPE: ");
       if (oregon.sens_type == THGN132) Serial.print("THGN132N");
       if (oregon.sens_type == THN132) Serial.print("THN132N ");
@@ -212,7 +214,7 @@ void loop()
       //Serial.print(" PROC. TIME: ");
       //Serial.print(oregon.work_time);
       //Serial.println("ms ");
-      Serial.println("");
+      
                
       byte _chnl = oregon.sens_chnl - 1;
       number_of_receiving[ _chnl]++;
@@ -223,23 +225,8 @@ void loop()
       r_hmdty[_chnl] = r_hmdty[_chnl] * ((number_of_receiving[_chnl] - 1) / number_of_receiving[_chnl]) + oregon.sens_hmdty / number_of_receiving[_chnl];
       rcv_time[_chnl] = millis();         
     }
+    Serial.println("");
     
-    if (!oregon.crc_c && oregon.packets_received)
-    {
-      Serial.print("TIME:\t");
-      Serial.print(millis()/1000);
-      Serial.print("sec\t");
-      for (int q = 0; q < PACKET_LENGTH - 1 ; q++) {
-        if (oregon.valid_p[q] >= 0x0F) Serial.print(oregon.packet[q], HEX);
-        else Serial.print("x");
-      }
-      Serial.println(" CORRUPTED PACKET ");
-    }
-  }
-  if (!oregon.crc_c && oregon.maybe_packet){
-    Serial.print("TIME:\t");
-    Serial.print(millis()/1000);
-    Serial.println("\tINCOMPLETE PACKET");
   }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -399,5 +386,3 @@ void wait_timer(int del){
   return;
     
 }
-
-
