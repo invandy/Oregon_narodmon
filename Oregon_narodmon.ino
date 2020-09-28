@@ -183,9 +183,9 @@ void loop()
       Serial.print(millis()/1000);
       Serial.print("sec\t");
       //if (oregon.sens_type == THGN132)  for (int q = 0;q < PACKET_LENGTH - 2; q++) Serial.print(oregon.packet[q], HEX);
-      if (oregon.sens_type == THGN132)  for (int q = 0;q < PACKET_LENGTH - 1; q++) Serial.print(oregon.packet[q], HEX);
+      if (oregon.sens_type == THGN132)  for (int q = 0;q < PACKET_LENGTH; q++) Serial.print(oregon.packet[q], HEX);
       //if (oregon.sens_type == THN132)  for (int q = 0;q < PACKET_LENGTH - 4; q++) Serial.print(oregon.packet[q], HEX);
-      if (oregon.sens_type == THN132)  for (int q = 0;q < PACKET_LENGTH - 4; q++) Serial.print(oregon.packet[q], HEX);
+      if (oregon.sens_type == THN132)  for (int q = 0;q < PACKET_LENGTH; q++) Serial.print(oregon.packet[q], HEX);
       Serial.print(" TYPE: ");
       if (oregon.sens_type == THGN132) Serial.print("THGN132N");
       if (oregon.sens_type == THN132) Serial.print("THN132N ");
