@@ -68,7 +68,7 @@ unsigned long cur_mark;
 void setup()
 {
 
-    
+  WiFi.mode(WIFI_STA);      
   pinMode(BLUE_LED, OUTPUT);        
   pinMode(GREEN_LED, OUTPUT);        
   pinMode(RED_LED, OUTPUT);        
